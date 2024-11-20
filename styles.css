@@ -1,0 +1,190 @@
+/* General Styling */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to right, purple, red);
+  overflow: hidden;
+  font-family: 'Baloo 2', cursive; /* Bubble-like font */
+  color: white;
+  animation: fade-in 2s ease; /* Fade in for the entire page */
+}
+
+/* Fade-In Animation for the Body */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Header and Footer */
+header, footer {
+  text-align: center;
+  opacity: 1;
+  animation: slide-down 1.5s ease; /* Smooth slide-down animation */
+}
+
+/* Header Slide Animation */
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Footer Slide-Up Animation */
+footer {
+  animation: slide-up 1.5s ease; /* Footer slides up */
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Heading */
+.heading {
+  font-size: 3rem;
+  margin: 20px;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+  animation: pulse 2s infinite; /* Pulse animation for a lively effect */
+}
+
+/* Pulse Animation for Heading */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Bubble Container */
+.bubble-container {
+  position: relative;
+}
+
+/* Bubble Styling */
+.bubble {
+  width: 300px;
+  height: 300px;
+  background-color: blue;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  animation: bounce 3s infinite; /* Existing bounce animation */
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+}
+
+.bubble:hover {
+  animation: bounce-fast 1.5s infinite;
+  background-color: darkblue;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Bubble Pieces */
+.bubble-piece {
+  width: 15px;
+  height: 15px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.bubble-piece.animate {
+  animation: explode 1s ease-out forwards, fall 1s ease-out 1s forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--x-offset)), calc(-50% + var(--y-offset))) scale(0.5);
+    opacity: 1;
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(300px);
+    opacity: 0;
+  }
+}
+
+/* Bounce Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes bounce-fast {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+}
+
+/* Quote Styling */
+.quote {
+  position: absolute;
+  top: 30%; /* Move the quote higher on the screen */
+  left: 50%;
+  transform: translate(-50%, 0); /* Center horizontally */
+  color: white;
+  font-size: 4rem; /* Larger font size for the quote */
+  font-weight: bold;
+  font-family: 'Baloo 2', cursive; /* Updated bubble-like font */
+  text-align: center;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+  animation: fade-in 2s ease; /* Fade-in animation for quote */
+  display: none;
+}
+
+/* New Styling for Individual Words */
+.quote span {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+}
+
+.quote span:hover {
+  transform: translateY(-10px) rotate(-10deg); /* Move up and tilt slightly */
+  color: yellow; /* Change color on hover */
+}
